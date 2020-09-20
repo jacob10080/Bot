@@ -1,0 +1,25 @@
+Reactions:
+
+    case 'colours':
+      if (message.content === '!colours') {
+        message.react('🔴');
+        message.react('🟠');
+        message.react('🟡');
+        message.react('🟢');
+        message.react('🔵');
+        message.react('🟣');
+        message.react('🌈');
+      }
+      break;
+      
+Or Fruits
+
+    case 'fruits':
+      if (message.content === '!fruits') {
+        message.react('🍎');
+        message.react('🍊');
+        message.react('🍇');
+      }
+      break;
+      
+(You can add more fruits)
