@@ -1,0 +1,30 @@
+    case 'poll':
+      if (!message.member.roles.cache.some(r => ["Admin"].includes(r.name)))
+        return message.reply('**An error occurred:** You don\'t have permission to host polls!')
+      const poll = new Discord.MessageEmbed()
+        .setColor(BlackColourHex)
+        .setTitle('Error')
+        .addField('Please provide your poll', '!poll [Your poll]')
+        .setFooter(Footer);
+
+      if (!args[1]) {
+        message.channel.send(poll)
+        break;
+      }
+      if (!message.member.roles.cache.some(r => ["Admin"].includes(r.name)))
+        return message.reply('**An error occurred:** You don\'t have permission to host polls!')
+
+      let msgArgs = args.slice(1).join(" ");
+      const poll2 = new Discord.MessageEmbed()
+        .setTitle('Poll')
+        .setDescription(`Please vote to this poll as to what you think. Only vote once. 
+        Poll by ${message.author.tag}`)
+        .addField('Please Vote Once', msgArgs)
+        .setFooter(Footer)
+      message.channel.send(poll2).then(messageReaction => {
+        messageReaction.react('✅');
+        messageReaction.react('❌');
+        messageReaction.react('🤷‍♂️');
+        message.delete({ setTimeout: 5000 });
+      })
+      break;
