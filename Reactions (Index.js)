@@ -1,4 +1,4 @@
-Reactions:
+// Reactions:
 
     case 'colours':
       if (message.content === '!colours') {
@@ -12,7 +12,7 @@ Reactions:
       }
       break;
       
-Or Fruits
+// Or Fruits
 
     case 'fruits':
       if (message.content === '!fruits') {
@@ -22,4 +22,4 @@ Or Fruits
       }
       break;
       
-(You can add more fruits)
+// (You can add more fruits)
