@@ -1,0 +1,49 @@
+    if (message.content === `${prefix}user-info`) {
+        const user1 = message.mentions.users.first() || message.member.user
+        const member1 = message.guild.members.cache.get(user1.id)
+
+        console.log(member1)
+
+        const userinfo = new Discord.MessageEmbed()
+            .setAuthor(`User info for ${user1.username}`, user1.displayAvatarURL())
+            .addFields(
+                {
+                    inline: true,
+                    name: 'User tag',
+                    value: user1.tag,
+                },
+                {
+                    name: 'Is a',
+                    value: user1.bot || 'Person',
+                },
+                {
+                    inline: true,
+                    name: 'User ID',
+                    value: user1.id,
+                },
+                {
+                    name: 'Discriminator',
+                    value: '#' + user1.discriminator,
+                },
+                {
+                    name: 'Nickname',
+                    value: member1.nickname || 'No Set Nickname',
+                },
+                {
+                    name: 'Joined Server',
+                    value: new Date(member1.joinedTimestamp).toLocaleDateString(),
+                },
+                {
+                    name: 'Joined Discord',
+                    value: new Date(user1.createdTimestamp).toLocaleDateString(),
+                },
+                {
+                    name: 'Roles',
+                    value: member1.roles.cache.size - 1,
+                })
+            .setImage(user1.displayAvatarURL())
+            .setTimestamp()
+            .setFooter('LAST UPDATED')
+
+        message.channel.send(userinfo)
+    }
