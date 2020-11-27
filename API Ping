@@ -1,0 +1,7 @@
+    if (message.content === `${prefix}ping`) {
+        message.reply('Calculating ping...').then((resultMessage) => {
+            const ping1 = resultMessage.createdTimestamp - message.createdTimestamp
+
+            resultMessage.edit(`**Pong!** Bot latency: ${ping1}ms, API Latency: ${client.ws.ping}ms.`)
+        })
+    }
